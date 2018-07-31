@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  size: MyString
+  weight: MyString
+  tackle: MyString
+  bait: MyString
+  caught_number: 1
+  caught_time: MyString
+  event_id: 1
+
+two:
+  name: MyString
+  size: MyString
+  weight: MyString
+  tackle: MyString
+  bait: MyString
+  caught_number: 1
+  caught_time: MyString
+  event_id: 1

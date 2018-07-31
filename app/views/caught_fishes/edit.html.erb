@@ -1,0 +1,14 @@
+<h2>釣果を編集する</h2>
+
+  <div class="fish_images">
+    <p>
+      <% if FishImage.where(caught_fish_id: @caught_fish.id).exists? %>
+        <% @fish_images.each do |fish_image| %>
+          <strong>Image:</strong>
+          <%= image_tag fish_image.image %>
+        <% end %>
+      <% end %>
+    </p>
+  </div>
+
+<%= render 'form' %>

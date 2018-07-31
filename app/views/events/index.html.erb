@@ -1,0 +1,34 @@
+<div class="container">
+  <div id="new-event-link">
+    <%= link_to '新規釣り日記を作成する', new_event_path %>
+  </div>
+
+  <% @events.each do |event| %>
+    <div class="col-xs-12 col-md-6 event-panel">
+      <div class="event-panel">
+        <p>釣り場所:<%= event.spot_name %></p>
+        <p>開始日:<%= event.start_date %></p>
+        <p>終了日:<%= event.end_date %></p>
+        <p>釣り方:<%= event.method %></p>
+        <p>狙う魚:<%= event.target %></p>
+        <p>タックル:<%= event.tackle %></p>
+        <p>餌:<%= event.bait %></p>
+        <p>説明:<%= event.description %></p>
+  
+        <p>天気:<%= event.event_option.weather %></p>
+        <p>潮:<%= event.event_option.tide %></p>
+
+        <div class="event-links">
+          <% if logged_in? %>
+            <%= link_to 'Show', event, class: 'btn btn-default' %>
+            <% if event.user_id == current_user.id %>
+              <%= link_to 'Edit', edit_event_path(event), class: 'btn btn-info' %> |
+              <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+              <%= link_to 'Caughted Fish', caught_fishes_list_path(event) %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

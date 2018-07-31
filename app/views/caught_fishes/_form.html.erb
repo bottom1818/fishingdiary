@@ -1,0 +1,53 @@
+<%= form_with(model: @caught_fish, local: true ,url: caught_fish_choose_new_or_edit ) do |form| %>
+  <% if @caught_fish.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @caught_fish.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @caught_fish.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="caught_fish_caught_time">
+    <%= form.label :caught_time %>
+    <%= form.text_field :caught_time %>
+  </div>
+  <div class="caught_fish_name">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div class="caught_fish_size">
+    <%= form.label :size %>
+    <%= form.text_field :size %>
+  </div>
+  <div class="caught_fish_weight">
+    <%= form.label :weight %>
+    <%= form.text_field :weight %>
+  </div>
+  <div class="caught_fish_tackle">
+    <%= form.label :tackle %>
+    <%= form.text_field :tackle %>
+  </div>
+  <div class="caught_fish_bait">
+    <%= form.label :bait %>
+    <%= form.text_field :bait %>
+  </div>
+  <div class="caught_fish_caught_number">
+    <%= form.label :caught_number %>
+    <%= form.text_field :caught_number %>
+  </div>
+  
+  <%= form.fields_for :fish_image do |fish_image_field| %>
+    <div class="fish_image">
+      <%= fish_image_field.label :image %>
+      <%= fish_image_field.file_field :image, id: :fish_image %>
+      <%= fish_image_field.hidden_field :image_cache %>
+    </div>
+  <% end %>
+  
+  <%= form.submit %>
+<% end %>
+
+<%= link_to '釣果一覧画面にもどる', caught_fishes_list_path(@event), class: 'btn btn-primary'%>

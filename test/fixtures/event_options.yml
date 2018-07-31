@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  weather: MyString
+  max_temperature: MyString
+  min_temperature: MyString
+  wind_speed: MyString
+  wind_direction: MyString
+  wave_height: MyString
+  location_latitude: MyString
+  location_longitude: MyString
+  tide: MyString
+  first_low_tide: 2018-05-22 01:12:50
+  first_high_tide: 2018-05-22 01:12:50
+  second_low_tide: 2018-05-22 01:12:50
+  second_high_tide: 2018-05-22 01:12:50
+  event_id: 1
+
+two:
+  weather: MyString
+  max_temperature: MyString
+  min_temperature: MyString
+  wind_speed: MyString
+  wind_direction: MyString
+  wave_height: MyString
+  location_latitude: MyString
+  location_longitude: MyString
+  tide: MyString
+  first_low_tide: 2018-05-22 01:12:50
+  first_high_tide: 2018-05-22 01:12:50
+  second_low_tide: 2018-05-22 01:12:50
+  second_high_tide: 2018-05-22 01:12:50
+  event_id: 1

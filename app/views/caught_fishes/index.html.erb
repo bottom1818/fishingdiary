@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>釣果の一覧画面</h2>
+  <h2>釣り場所:<%= @event.spot_name %></h2>
+  <h2>開始日:<%= @event.start_date %></h2>
+  <% @caught_fishes.each do |caught_fish| %>
+    <div class="col-xs-12 col-md-6 caught_fish-panel">
+      <div class="caught_fish-panel">
+        <div class="caught_fish-links">
+          <% if @event.user_id == current_user.id %>
+            <%= link_to 'Edit', edit_caught_fish_path(@event,id: caught_fish.id), class: 'btn btn-info' %> |
+            <%= link_to 'Destroy', destroy_caught_fish_path(@event,id: caught_fish.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <% end %>
+        </div>
+
+        <p>釣った時刻:<%= caught_fish.caught_time %></p>
+        <p>魚の名前:<%= caught_fish.name %></p>
+        <p>サイズ:<%= caught_fish.size %></p>
+        <p>重さ:<%= caught_fish.weight %></p>
+        <p>タックル:<%= caught_fish.tackle %></p>
+        <p>エサ:<%= caught_fish.bait %></p>
+        <p>釣った数:<%= caught_fish.caught_number %></p>
+        <p>
+          <% if FishImage.where(caught_fish_id: caught_fish.id).exists? %>
+            <% @fish_images = FishImage.where(caught_fish_id: caught_fish.id) %>
+            <% @fish_images.each do |fish_image| %>
+              <strong>Image:</strong>
+              <%= image_tag fish_image.image %>
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+  <div id="new-caught_fish-link">
+    <%= link_to '釣果を追加する', new_caught_fish_path %>
+  </div>
+</div>

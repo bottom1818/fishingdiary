@@ -1,0 +1,48 @@
+<h3>以下の内容で、送信する。</h3>
+
+<%= form_with(model: @event, url: events_path, local: true) do |form| %>
+  <%= form.hidden_field :spot_name %>
+  <%= form.hidden_field :start_date %>
+  <%= form.hidden_field :end_date %>
+  <%= form.hidden_field :method %>
+  <%= form.hidden_field :target %>
+  <%= form.hidden_field :tackle %>
+  <%= form.hidden_field :bait %>
+  <%= form.hidden_field :description %>
+  
+  <%= form.fields_for :event_option, @event.event_option || EventOption.new do |event_option_form| %>
+    <%= event_option_form.hidden_field :weather %>
+    <%= event_option_form.hidden_field :tide %>
+  <% end %>
+  
+  <p>釣り場所:<%= @event.spot_name %></p>
+  <p>開始日:<%= @event.start_date %></p>
+  <p>終了日:<%= @event.end_date %></p>
+  <p>釣り方:<%= @event.method %></p>
+  <p>狙う魚:<%= @event.target %></p>
+  <p>タックル:<%= @event.tackle %></p>
+  <p>餌:<%= @event.bait %></p>
+  <p>説明:<%= @event.description %></p>
+  
+  <p>天気:<%= @event.event_option.weather %></p>
+  <p>潮:<%= @event.event_option.tide %></p>
+  
+  <%= form.submit  "登録する" %>
+<% end %>
+
+<%= form_with(model: @event, url: new_event_path, local: true, method: 'get') do |form| %>
+  <%= form.hidden_field :spot_name %>
+  <%= form.hidden_field :start_date %>
+  <%= form.hidden_field :end_date %>
+  <%= form.hidden_field :method %>
+  <%= form.hidden_field :target %>
+  <%= form.hidden_field :tackle %>
+  <%= form.hidden_field :bait %>
+  <%= form.hidden_field :description %>
+  
+  <%= form.fields_for :event_option, @event.event_option || EventOption.new do |event_option_form| %>
+    <%= event_option_form.hidden_field :weather %>
+    <%= event_option_form.hidden_field :tide %>
+  <% end %>
+  <%= form.submit "もどる", name: 'back' %>
+<% end %>

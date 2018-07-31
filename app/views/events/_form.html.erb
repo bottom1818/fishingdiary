@@ -1,0 +1,60 @@
+<%= form_with(model: @event, local: true ,url: event_choose_new_or_edit ) do |form| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @event.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @event.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="event_spot_name">
+    <%= form.label :spot_name %>
+    <%= form.text_field :spot_name %>
+  </div>
+  <div class="event_start_date">
+    <%= form.label :start_date %>
+    <%= form.text_field :start_date %>
+  </div>
+  <div class="event_end_date">
+    <%= form.label :end_date %>
+    <%= form.text_field :end_date %>
+  </div>
+  <div class="event_method">
+    <%= form.label :method %>
+    <%= form.text_field :method %>
+  </div>
+  <div class="event_target">
+    <%= form.label :target %>
+    <%= form.text_field :target %>
+  </div>
+  <div class="event_tackle">
+    <%= form.label :tackle %>
+    <%= form.text_field :tackle %>
+  </div>
+  <div class="event_bait">
+    <%= form.label :bait %>
+    <%= form.text_field :bait %>
+  </div>
+  <div class="event_description">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+  
+  <%= form.fields_for :event_option, @event.event_option || EventOption.new do |event_option_form| %>
+    <div class="event_option_weather">
+      <%= event_option_form.label :weather %>
+      <%= event_option_form.text_field :weather %>
+    </div>
+    <div class="event_option_tide">
+      <%= event_option_form.label :tide %>
+      <%= event_option_form.text_field :tide %>
+    </div>
+  <% end %>
+  
+  <%= form.submit %>
+<% end %>
+
+<%= link_to '釣り日記一覧画面にもどる', '/events', class: 'btn btn-primary'%>
