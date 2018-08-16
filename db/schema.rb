@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526051057) do
+ActiveRecord::Schema.define(version: 20180816065822) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,10 +38,10 @@ ActiveRecord::Schema.define(version: 20180526051057) do
     t.string "location_latitude"
     t.string "location_longitude"
     t.string "tide"
-    t.datetime "first_low_tide"
-    t.datetime "first_high_tide"
-    t.datetime "second_low_tide"
-    t.datetime "second_high_tide"
+    t.string "first_low_tide"
+    t.string "first_high_tide"
+    t.string "second_low_tide"
+    t.string "second_high_tide"
     t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

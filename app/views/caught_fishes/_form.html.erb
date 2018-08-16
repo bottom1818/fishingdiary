@@ -11,31 +11,31 @@
   <% end %>
 
   <div class="caught_fish_caught_time">
-    <%= form.label :caught_time %>
+    <%= form.label :caught_time, "釣った時刻：" %>
     <%= form.text_field :caught_time %>
   </div>
   <div class="caught_fish_name">
-    <%= form.label :name %>
+    <%= form.label :name, "魚の名前：" %>
     <%= form.text_field :name %>
   </div>
   <div class="caught_fish_size">
-    <%= form.label :size %>
+    <%= form.label :size, "サイズ：" %>
     <%= form.text_field :size %>
   </div>
   <div class="caught_fish_weight">
-    <%= form.label :weight %>
+    <%= form.label :weight, "重さ：" %>
     <%= form.text_field :weight %>
   </div>
   <div class="caught_fish_tackle">
-    <%= form.label :tackle %>
+    <%= form.label :tackle, "タックル：" %>
     <%= form.text_field :tackle %>
   </div>
   <div class="caught_fish_bait">
-    <%= form.label :bait %>
+    <%= form.label :bait, "エサ：" %>
     <%= form.text_field :bait %>
   </div>
   <div class="caught_fish_caught_number">
-    <%= form.label :caught_number %>
+    <%= form.label :caught_number, "釣った数：" %>
     <%= form.text_field :caught_number %>
   </div>
   
@@ -50,4 +50,4 @@
   <%= form.submit %>
 <% end %>
 
-<%= link_to '釣果一覧画面にもどる', caught_fishes_list_path(@event), class: 'btn btn-primary'%>
+<%= link_to '釣果一覧画面にもどる', caught_fishes_path(@event), class: 'btn btn-primary'%>

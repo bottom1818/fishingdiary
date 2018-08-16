@@ -4,7 +4,17 @@ class EventsController < ApplicationController
   before_action :current_user, only: [:new, :show, :edit, :destroy]
   
   def index
-    @events = Event.all
+    if params[:search]
+      #binding.pry # ブレークポイントを設定
+      @events = Event.search(params[:search])
+      logger.debug("Debug into search-----")
+      logger.debug(@event)
+    else
+      @events = Event.all
+      logger.debug("Debug out of search-----")
+      logger.debug(@event)
+    end
+    
   end
 
   def new

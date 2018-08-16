@@ -5,6 +5,8 @@ class CaughtFishesController < ApplicationController
   before_action :set_caught_fish, only: [:edit, :update, :destroy]
   
   def index
+    logger.debug("Debug into caught_fish index 1 -----")
+    
     if !logged_in?
       redirect_to new_session_path
     end
@@ -13,12 +15,11 @@ class CaughtFishesController < ApplicationController
   end
 
   def new
+    logger.debug("Debug into caught_fish new 1 -----")
+    
     if !logged_in?
       redirect_to new_session_path
     end
-    
-    logger.debug("Debug caught_fish new1-----")
-    logger.debug(@event.id)
   
     if params[:back]
       @caught_fish = CaughtFish.new(caught_fish_params)
@@ -45,8 +46,10 @@ class CaughtFishesController < ApplicationController
   end
   
   def create
+    logger.debug("Debug into caught_fish create 1 -----")
     @caught_fish = CaughtFish.new(caught_fish_params)
     @caught_fish.event_id = @event.id
+    @caught_fish.caught_number = params[:caught_fish][:caught_number].tr('０-９', '0-9')
 
     #binding.pry # ブレークポイントを設定
     logger.debug("Debug caught_fish create1-----")
@@ -72,7 +75,7 @@ class CaughtFishesController < ApplicationController
       end
       
       # 一覧画面へ遷移して"釣果を登録しました！"とメッセージを表示します。
-      redirect_to caught_fishes_list_path, notice: "釣果を登録しました！"
+      redirect_to caught_fishes_path, notice: "釣果を登録しました！"
     else
       # 入力フォームを再描画します。
       render 'new'
@@ -81,13 +84,15 @@ class CaughtFishesController < ApplicationController
   end
   
   def show
+    logger.debug("Debug into caught_fish show 1 -----")
     if !logged_in?
       redirect_to new_session_path
     end
-    @fish_images = @caught_fish.fish_images.where(caught_fish_id: @caught_fish.id)
+    redirect_to caught_fishes_path
   end
   
   def edit
+    logger.debug("Debug into caught_fish edit 1 -----")
     if !logged_in?
       redirect_to new_session_path
     end
@@ -95,6 +100,8 @@ class CaughtFishesController < ApplicationController
   end
   
   def update
+    logger.debug("Debug into caught_fish update 1 -----")
+    #binding.pry # ブレークポイントを設定
     if !params[:caught_fish].nil? && params[:caught_fish][:fish_image][:image].present?
       
       logger.debug("Debug fish_image create-----")
@@ -112,9 +119,10 @@ class CaughtFishesController < ApplicationController
         @fish_image.save
       end
       
-      redirect_to caught_fishes_list_path, notice: "釣果を更新しました！"
+      redirect_to caught_fishes_path, notice: "釣果を更新しました！"
     else
-      render 'edit'
+      redirect_to edit_caught_fish_path(@event,id: @caught_fish.id)
+      #render 'edit'
     end
   end
   
@@ -123,7 +131,7 @@ class CaughtFishesController < ApplicationController
       redirect_to new_session_path
     end
     @caught_fish.destroy
-    redirect_to caught_fishes_list_path, notice:"釣果を削除しました！"
+    redirect_to caught_fishes_path, notice:"釣果を削除しました！"
   end
   
 #  def confirm

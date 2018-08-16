@@ -62,3 +62,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'dotenv-rails'
+
+gem 'search_cop'
+
+gem 'jquery-ui-rails'
