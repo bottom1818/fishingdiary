@@ -1,113 +1,177 @@
-<%= form_with(model: @event, local: true ,url: event_choose_new_or_edit ) do |form| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= @event.errors.count %>件のエラーがあります。</h2>
+<div class="col-xs-12 col-md-6 event-panel event-box">
+
+  <%= form_with(model: @event, local: true ,url: event_choose_new_or_edit ) do |form| %>
+    <% if @event.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= @event.errors.count %>件のエラーがあります。</h2>
+        <ul>
+          <% @event.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <ul>
+      <li>
+        <div class="event_spot_name">
+          <%= form.label :spot_name, "釣り場所：" %>
+          <%= form.text_field :spot_name %>
+        </div>
+      </li>
+      <li>
+        <div class="event_start_date">
+          <%= form.label :start_date, "開始日：" %>
+          <%= form.text_field :start_date, class: 'date-picker' %>
+        </div>
+      </li>
+      <li>
+        <div class="event_end_date">
+          <%= form.label :end_date, "終了日：" %>
+          <%= form.text_field :end_date, class: 'date-picker' %>
+        </div>
+      </li>
+      <li>
+        <div class="event_method">
+          <%= form.label :method, "釣り方：" %>
+          <%= form.text_field :method %>
+        </div>
+      </li>
+      <li>
+        <div class="event_target">
+          <%= form.label :target, "狙う魚：" %>
+          <%= form.text_field :target %>
+        </div>
+      </li>
+      <li>
+        <div class="event_tackle">
+          <%= form.label :tackle, "タックル：" %>
+          <%= form.text_field :tackle %>
+        </div>
+      </li>
+      <li>
+        <div class="event_bait">
+          <%= form.label :bait, "餌：" %>
+          <%= form.text_field :bait %>
+        </div>
+      </li>
+      <li>
+        <div class="event_description">
+          <%= form.label :description, "感想：" %>
+          <%= form.text_field :description %>
+        </div>
+      </li>
+    </ul>
+  
+    
+    <%= form.fields_for :event_option, @event.event_option || EventOption.new do |event_option_form| %>
       <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <li>
+          <div class="event_option_weather">
+            <%= event_option_form.label :weather, "天気：" %>
+            <%= event_option_form.text_field :weather %>
+          </div>
+        </li>
       </ul>
-    </div>
+      <ul>
+        <li>
+          <div class="event_option_tide">
+            <%= event_option_form.label :tide, "潮：" %>
+            <%= event_option_form.select :tide, 
+              [["不明", "不明"],
+              ["大潮", "大潮"],
+              ["中潮", "中潮"],
+              ["小潮", "小潮"],
+              ["長潮", "長潮"],
+              ["若潮", "若潮"]]
+            %>
+          </div>
+          </li>
+        </ul>
+      
+      <br>
+      <br>
+      <ul>
+        <div class="event_option_temperature">
+          <li>
+            <%= event_option_form.label :max_temperature, "最高気温：" %>
+            <%= event_option_form.text_field :max_temperature %>
+          </li>
+          <li>
+            <%= event_option_form.label :min_temperature, "最低気温：" %>
+            <%= event_option_form.text_field :min_temperature %>
+          </li>
+        </div>
+      </ul>
+
+      <ul>
+        <div class="event_option_wind">
+          <li>
+            <%= event_option_form.label :wind_speed, "風速：" %>
+            <%= event_option_form.text_field :wind_speed %>
+          </li>
+          <li>
+            <%= event_option_form.label :wind_direction, "風向き：" %>
+            <%= event_option_form.select :wind_direction, 
+              [["不明", "不明"],
+              ["東", "東"],
+              ["西", "西"],
+              ["南", "南"],
+              ["北", "北"],
+              ["北東", "北東"],
+              ["北西", "北西"],
+              ["南東", "南東"],
+              ["南西", "南西"],
+              ["北北東", "北北東"],
+              ["北北西", "北北西"],
+              ["南南東", "南南東"],
+              ["南南西", "南南西"],
+              ["東北東", "東北東"],
+              ["西北西", "西北西"],
+              ["東南東", "東南東"],
+              ["西南西", "西南西"]]
+            %>
+          </li>
+        </div>
+      </ul>
+      
+      <br>
+      <ul>
+        <li>
+          <div class="event_option_wave">
+            <%= event_option_form.label :wave_height, "波の高さ：" %>
+            <%= event_option_form.text_field :wave_height %>
+          </div>
+        </li>
+      </ul>
+      
+      <ul>
+        <div class="event_option_first_tide">
+          <li>
+            <%= event_option_form.label :first_low_tide, "干潮時刻１：" %>
+            <%= event_option_form.text_field :first_low_tide %>
+          </li>
+          <li>
+            <%= event_option_form.label :first_high_tide, "満潮時刻１：" %>
+            <%= event_option_form.text_field :first_high_tide %>
+          </li>
+        </div>
+        <div class="event_option_second_tide">
+          <li>
+            <%= event_option_form.label :second_low_tide, "干潮時刻２：" %>
+            <%= event_option_form.text_field :second_low_tide %>
+          </li>
+          <li>
+            <%= event_option_form.label :second_high_tide, "満潮時刻２：" %>
+            <%= event_option_form.text_field :second_high_tide %>
+          </li>
+        </div>
+      </ul>
+    <% end %>
+    
+    <%= form.submit @submit %>
   <% end %>
 
-  <div class="event_spot_name">
-    <%= form.label :spot_name, "釣り場所：" %>
-    <%= form.text_field :spot_name %>
-  </div>
-  <div class="event_start_date">
-    <%= form.label :start_date, "開始日：" %>
-    <%= form.text_field :start_date, class: 'date-picker' %>
-  </div>
-  <div class="event_end_date">
-    <%= form.label :end_date, "終了日：" %>
-    <%= form.text_field :end_date, class: 'date-picker' %>
-  </div>
-  <div class="event_method">
-    <%= form.label :method, "釣り方：" %>
-    <%= form.text_field :method %>
-  </div>
-  <div class="event_target">
-    <%= form.label :target, "狙う魚：" %>
-    <%= form.text_field :target %>
-  </div>
-  <div class="event_tackle">
-    <%= form.label :tackle, "タックル：" %>
-    <%= form.text_field :tackle %>
-  </div>
-  <div class="event_bait">
-    <%= form.label :bait, "餌：" %>
-    <%= form.text_field :bait %>
-  </div>
-  <div class="event_description">
-    <%= form.label :description, "感想：" %>
-    <%= form.text_field :description %>
-  </div>
-  
-  <%= form.fields_for :event_option, @event.event_option || EventOption.new do |event_option_form| %>
-    <div class="event_option_weather">
-      <%= event_option_form.label :weather, "天気：" %>
-      <%= event_option_form.text_field :weather %>
-    </div>
-    <div class="event_option_tide">
-      <%= event_option_form.label :tide, "潮：" %>
-      <%= event_option_form.select :tide, 
-        [["不明", "不明"],
-        ["大潮", "大潮"],
-        ["中潮", "中潮"],
-        ["小潮", "小潮"],
-        ["長潮", "長潮"],
-        ["若潮", "若潮"]]
-      %>
-    </div>
-    <div class="event_option_temperature">
-      <%= event_option_form.label :max_temperature, "最高気温：" %>
-      <%= event_option_form.text_field :max_temperature %>
-      <%= event_option_form.label :min_temperature, "最低気温：" %>
-      <%= event_option_form.text_field :min_temperature %>
-    </div>
-    <div class="event_option_wind">
-      <%= event_option_form.label :wind_speed, "風速：" %>
-      <%= event_option_form.text_field :wind_speed %>
-      <%= event_option_form.label :wind_direction, "風向き：" %>
-      <%= event_option_form.select :wind_direction, 
-        [["不明", "不明"],
-        ["東", "東"],
-        ["西", "西"],
-        ["南", "南"],
-        ["北", "北"],
-        ["北東", "北東"],
-        ["北西", "北西"],
-        ["南東", "南東"],
-        ["南西", "南西"],
-        ["北北東", "北北東"],
-        ["北北西", "北北西"],
-        ["南南東", "南南東"],
-        ["南南西", "南南西"],
-        ["東北東", "東北東"],
-        ["西北西", "西北西"],
-        ["東南東", "東南東"],
-        ["西南西", "西南西"]]
-      %>
-    </div>
-    <div class="event_option_wave">
-      <%= event_option_form.label :wave_height, "波の高さ：" %>
-      <%= event_option_form.text_field :wave_height %>
-    </div>
-    <div class="event_option_first_tide">
-      <%= event_option_form.label :first_low_tide, "干潮時刻１：" %>
-      <%= event_option_form.text_field :first_low_tide %>
-      <%= event_option_form.label :first_high_tide, "満潮時刻１：" %>
-      <%= event_option_form.text_field :first_high_tide %>
-    </div>
-    <div class="event_option_second_tide">
-      <%= event_option_form.label :second_low_tide, "干潮時刻２：" %>
-      <%= event_option_form.text_field :second_low_tide %>
-      <%= event_option_form.label :second_high_tide, "満潮時刻２：" %>
-      <%= event_option_form.text_field :second_high_tide %>
-    </div>
-  <% end %>
-  
-  <%= form.submit %>
-<% end %>
+</div>
 
 <%= link_to '釣り日記一覧画面にもどる', '/events', class: 'btn btn-primary'%>

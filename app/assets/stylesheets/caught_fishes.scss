@@ -1,3 +1,28 @@
-// Place all the styles related to the caught_fishes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.caught_fish-box {
+  background-color: #83bff3;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #83bff3;
+  color: #000000;
+  margin: 2em 0;
+  padding: 2em;
+  height: 600px;
+  overflow: scroll;
+}
+
+
+.new-caught_fish-box {
+  background-color: #337ab7;
+  border: 1px solid #210e75;
+  box-shadow: 1px 1px 0 rgba(255, 255, 255, .4) inset,
+    0 0 4px rgba(0, 0, 0, .8) inset,
+    2px 2px 2px rgba(0, 0, 0, .4);
+  color: #fff;
+  margin: 2em 0;
+  padding: 2em;
+  height: 70px;
+  width: 300px;
+}
+
+.new-caught_fish-box > a {
+    color: #fff;
+}

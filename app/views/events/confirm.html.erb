@@ -1,5 +1,7 @@
-<h3>以下の内容で、送信する。</h3>
+<div class="container">
+<u><h3>以下の内容で、送信する。</h3></u>
 
+<div class="col-xs-12 col-md-6 event-panel event-box">
 <%= form_with(model: @event, url: events_path, local: true) do |form| %>
   <%= form.hidden_field :spot_name %>
   <%= form.hidden_field :start_date %>
@@ -45,7 +47,7 @@
   <p>干潮時刻２：<%= @event.event_option.second_low_tide %></p>
   <p>満潮時刻２：<%= @event.event_option.second_high_tide %></p>
  
-  <%= form.submit  "登録する" %>
+  <%= form.submit  "登録" %>
 <% end %>
 
 <%= form_with(model: @event, url: new_event_path, local: true, method: 'get') do |form| %>
@@ -73,3 +75,5 @@
   <% end %>
   <%= form.submit "もどる", name: 'back' %>
 <% end %>
+</div>
+</div>

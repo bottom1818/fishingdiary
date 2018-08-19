@@ -66,3 +66,5 @@ gem 'dotenv-rails'
 gem 'search_cop'
 
 gem 'jquery-ui-rails'
+
+gem 'font-awesome-rails'

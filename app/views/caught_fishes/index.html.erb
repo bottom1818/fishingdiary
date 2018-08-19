@@ -1,16 +1,16 @@
 <div class="container">
-  <h2>釣果の一覧画面</h2>
-  <h2>釣り場所:<%= @event.spot_name %></h2>
-  <h2>開始日:<%= @event.start_date.strftime("%Y-%m-%d") %></h2>
+  <u><h2>釣果の一覧</h2></u>
+  <h3>釣り場所:<%= @event.spot_name %></h3>
+  <h3>開始日:<%= @event.start_date.strftime("%Y-%m-%d") %></h3>
   
   <% if @event.user_id == current_user.id %>
-    <div id="new-caught_fish-link">
+    <div id="new-caught_fish-link" class="new-caught_fish-box">
       <%= link_to '釣果を追加する', new_caught_fish_path %>
     </div>
   <% end %>
   
   <% @caught_fishes.each do |caught_fish| %>
-    <div class="col-xs-12 col-md-6 caught_fish-panel">
+    <div class="col-xs-12 col-md-6 caught_fish-panel caught_fish-box">
       <div class="caught_fish-panel">
         <div class="caught_fish-links">
           <% if @event.user_id == current_user.id %>
@@ -30,8 +30,12 @@
           <% if FishImage.where(caught_fish_id: caught_fish.id).exists? %>
             <% @fish_images = FishImage.where(caught_fish_id: caught_fish.id) %>
             <% @fish_images.each do |fish_image| %>
-              <strong>Image:</strong>
-              <%= image_tag fish_image.image %>
+              <ul>
+                <li>
+                  <strong></strong>
+                  <%= image_tag fish_image.image %>
+                </li>
+              </ul>
             <% end %>
           <% end %>
         </p>

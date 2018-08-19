@@ -30,6 +30,7 @@ class EventsController < ApplicationController
       @event = Event.new
       #@event_option = EventOption.new()
     end
+    @submit = '確認'
     #binding.pry # ブレークポイントを設定
     #@event.build_event_option
     @event.user = current_user
@@ -74,6 +75,7 @@ class EventsController < ApplicationController
     if !logged_in?
       redirect_to new_session_path
     end
+    @submit = '更新'
     #@event_option = @event.event_options.find_by(event_id: @event.id)
   end
   
@@ -105,6 +107,7 @@ class EventsController < ApplicationController
     logger.debug(@event.event_option)
     logger.debug(@event.event_option.weather)
 
+    @submit = '登録'
     render :new if @event.invalid?
   end
   

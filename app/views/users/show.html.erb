@@ -1,10 +1,13 @@
 <div class="container">
-  <h2><%= @user.name %>のページ</h2>
-  <p>メールアドレス: <%= @user.email %></p>
-
-  <h2>お気に入りの一覧</h2>
+  <u><h2><%= @user.name %>のページ</h2></u>
+  
+  <h3>
+    <p>メールアドレス: <%= @user.email %></p>
+  </h3>
+  
+  <h3>お気に入りの一覧</h3>
   <% @favorite_events.each do |event| %>
-    <div class="col-xs-12 col-md-6 event-panel">
+    <div class="col-xs-12 col-md-6 event-panel event-box">
       <div class="event-panel">
         <p>釣り場所:<%= event.spot_name %></p>
         <p>開始日:<%= event.start_date %></p>
@@ -14,11 +17,10 @@
         <p>タックル:<%= event.tackle %></p>
         <p>餌:<%= event.bait %></p>
         <p>説明:<%= event.description %></p>
-  
-        <p>天気:<%= event.event_option.weather %></p>
-        <p>潮:<%= event.event_option.tide %></p>
 
       </div>
+      <%= link_to '詳細', event, class: 'btn btn-default' %>
+      <%= link_to '釣果', caught_fishes_path(event), class: 'btn btn-default'  %>
       <%= link_to 'お気に入り解除する', favorite_path(event_id: event.id, from_url: 'user_profile'), method: :delete, class: 'btn btn-danger' %>
     </div>
   <% end %>

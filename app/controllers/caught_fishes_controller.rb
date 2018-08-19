@@ -37,6 +37,7 @@ class CaughtFishesController < ApplicationController
     else
       @caught_fish = CaughtFish.new
       @fish_image = FishImage.new()
+      @submit = '登録'
     end
 
   logger.debug("Debug caught_fish new2-----")
@@ -97,6 +98,7 @@ class CaughtFishesController < ApplicationController
       redirect_to new_session_path
     end
     @fish_images = @caught_fish.fish_images.where(caught_fish_id: @caught_fish.id)
+    @submit = '更新'
   end
   
   def update

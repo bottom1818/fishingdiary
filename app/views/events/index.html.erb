@@ -1,17 +1,20 @@
 <div class="container">
-  <div id="new-event-link">
+  <u><h2>釣り日記の一覧</h2></u>
+  <div id="new-event-link" class="new-event-box">
     <%= link_to '新規釣り日記を作成する', new_event_path %>
   </div>
   
-  <%= form_tag(events_path, method: :get) do %> 
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "日記の検索", :name => nil %>
-    </p>
-  <% end %>
+  <div id="new-event-link" class="search-event-box">
+    <%= form_tag(events_path, method: :get) do %> 
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "日記の検索", :name => nil %>
+      </p>
+    <% end %>
+  </div>
 
   <% @events.each do |event| %>
-    <div class="col-xs-12 col-md-6 event-panel">
+    <div class="col-xs-12 col-md-6 event-panel event-box">
       <div class="event-panel">
         <p>釣り場所：<%= event.spot_name %></p>
         <p>開始日：<%= event.start_date.strftime("%Y-%m-%d") %></p>
@@ -35,4 +38,5 @@
       </div>
     </div>
   <% end %>
+
 </div>

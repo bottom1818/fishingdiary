@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  
+  get '/', to: 'tops#index'
 
   resources :users do
   end
@@ -28,5 +30,7 @@ Rails.application.routes.draw do
 #    end
 #  end
 
+  resources :tops do
+  end
   
 end

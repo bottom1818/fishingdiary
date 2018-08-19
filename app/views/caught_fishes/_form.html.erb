@@ -1,53 +1,91 @@
-<%= form_with(model: @caught_fish, local: true ,url: caught_fish_choose_new_or_edit ) do |form| %>
-  <% if @caught_fish.errors.any? %>
+<div class="col-xs-12 col-md-6 event-panel caught_fish-box">
+  
+  <%= form_with(model: @caught_fish, local: true ,url: caught_fish_choose_new_or_edit ) do |form| %>
+    <% if @caught_fish.errors.any? %>
     <div id="error_explanation">
-      <h2><%= @caught_fish.errors.count %>件のエラーがあります。</h2>
+        <h2><%= @caught_fish.errors.count %>件のエラーがあります。</h2>
+        <ul>
+          <% @caught_fish.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <ul>
+      <li>
+        <div class="caught_fish_caught_time">
+          <%= form.label :caught_time, "釣った時刻：" %>
+          <%= form.text_field :caught_time %>
+        </div>
+      </li>
+      <li>
+        <div class="caught_fish_name">
+          <%= form.label :name, "魚の名前：" %>
+          <%= form.text_field :name %>
+        </div>
+      </li>
+      <li>
+        <div class="caught_fish_size">
+          <%= form.label :size, "サイズ：" %>
+          <%= form.text_field :size %>
+        </div>
+      </li>
+      <li>
+        <div class="caught_fish_weight">
+          <%= form.label :weight, "重さ：" %>
+          <%= form.text_field :weight %>
+        </div>
+      </li>
+      <li>
+        <div class="caught_fish_tackle">
+          <%= form.label :tackle, "タックル：" %>
+          <%= form.text_field :tackle %>
+        </div>
+      </li>
+      <li>
+        <div class="caught_fish_bait">
+          <%= form.label :bait, "エサ：" %>
+          <%= form.text_field :bait %>
+        </div>
+      </li>
+      <li>
+        <div class="caught_fish_caught_number">
+          <%= form.label :caught_number, "釣った数：" %>
+          <%= form.text_field :caught_number %>
+        </div>
+      </li>
+    </ul>
+
+    <%= form.fields_for :fish_image do |fish_image_field| %>
       <ul>
-      <% @caught_fish.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
+        <li>
+          <div class="fish_image">
+            <%= fish_image_field.label :image, "写真の追加：" %>
+            <%= fish_image_field.file_field :image, id: :fish_image %>
+            <%= fish_image_field.hidden_field :image_cache %>
+          </div>
+        </li>
       </ul>
+    <% end %>
+
+    <div class="fish_images">
+      <% if FishImage.where(caught_fish_id: @caught_fish.id).exists? %>
+        <% @fish_images.each do |fish_image| %>
+          <ul>
+            <li>
+              <strong></strong>
+              <%= image_tag fish_image.image %>
+            </li>
+          </ul>
+        <% end %>
+      <% end %>
     </div>
+  
+  
+    <%= form.submit @submit %>
   <% end %>
 
-  <div class="caught_fish_caught_time">
-    <%= form.label :caught_time, "釣った時刻：" %>
-    <%= form.text_field :caught_time %>
-  </div>
-  <div class="caught_fish_name">
-    <%= form.label :name, "魚の名前：" %>
-    <%= form.text_field :name %>
-  </div>
-  <div class="caught_fish_size">
-    <%= form.label :size, "サイズ：" %>
-    <%= form.text_field :size %>
-  </div>
-  <div class="caught_fish_weight">
-    <%= form.label :weight, "重さ：" %>
-    <%= form.text_field :weight %>
-  </div>
-  <div class="caught_fish_tackle">
-    <%= form.label :tackle, "タックル：" %>
-    <%= form.text_field :tackle %>
-  </div>
-  <div class="caught_fish_bait">
-    <%= form.label :bait, "エサ：" %>
-    <%= form.text_field :bait %>
-  </div>
-  <div class="caught_fish_caught_number">
-    <%= form.label :caught_number, "釣った数：" %>
-    <%= form.text_field :caught_number %>
-  </div>
-  
-  <%= form.fields_for :fish_image do |fish_image_field| %>
-    <div class="fish_image">
-      <%= fish_image_field.label :image %>
-      <%= fish_image_field.file_field :image, id: :fish_image %>
-      <%= fish_image_field.hidden_field :image_cache %>
-    </div>
-  <% end %>
-  
-  <%= form.submit %>
-<% end %>
+</div>
 
 <%= link_to '釣果一覧画面にもどる', caught_fishes_path(@event), class: 'btn btn-primary'%>
