@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-md-6 event-panel caught_fish-box">
+<div class="col-xs-12 col-md-6 event-panel input-caught_fish-box">
   
   <%= form_with(model: @caught_fish, local: true ,url: caught_fish_choose_new_or_edit ) do |form| %>
     <% if @caught_fish.errors.any? %>
@@ -85,7 +85,9 @@
   
     <%= form.submit @submit %>
   <% end %>
+  <br>
+  <%= link_to 'もどる', caught_fishes_path(@event), class: 'btn btn-primary'%>
 
 </div>
 
-<%= link_to '釣果一覧画面にもどる', caught_fishes_path(@event), class: 'btn btn-primary'%>
+
