@@ -28,7 +28,11 @@
   
   <p>釣り場所：<%= @event.spot_name %></p>
   <p>開始日：<%= @event.start_date.strftime("%Y-%m-%d")  %></p>
-  <p>終了日：<%= @event.end_date.strftime("%Y-%m-%d") %></p>
+  <% unless @event.end_date.blank? %>
+    <p>終了日：<%= @event.end_date.strftime("%Y-%m-%d") %></p>
+  <% else %>
+    <p>終了日：<%= @event.end_date %></p>
+  <% end %>
   <p>釣り方：<%= @event.method %></p>
   <p>狙う魚：<%= @event.target %></p>
   <p>タックル：<%= @event.tackle %></p>
