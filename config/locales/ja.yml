@@ -1,0 +1,42 @@
+ja:
+  activerecord:
+    models:
+      event: '釣り情報'
+      event_option: '釣りオプション情報'
+      caught_fish: '釣果情報'
+      user: 'ユーザ情報'
+    attributes:
+      event:
+        spot_name: "釣り場所"
+        start_date: "開始日"
+        end_date: "終了日"
+        method: "釣り方"
+        tackle: "タックル"
+        bait: "餌"
+        description: "感想"
+        target: "狙う魚"
+      event_option:
+        weather: "天気"
+        max_temperature: "最高気温"
+        min_temperature: "最低気温"
+        wind_speed: "風速"
+        wind_direction: "風向き"
+        wave_height: "波の高さ"
+        tide: "潮"
+        first_low_tide: "干潮時刻１"
+        first_high_tide: "満潮時刻１"
+        second_low_tide: "干潮時刻２"
+        second_high_tide: "満潮時刻２"
+      caught_fish:
+        name: "魚の名前"
+        size: "サイズ"
+        weight: "重さ"
+        tackle: "タックル"
+        bait: "エサ"
+        caught_number: "釣った数"
+        caught_time: "釣った時刻"
+      user:
+        name: "ユーザ名"
+        email: "メールアドレス"
+        password_digest: "パスワード"
+      

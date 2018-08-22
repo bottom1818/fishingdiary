@@ -76,6 +76,10 @@ class EventsController < ApplicationController
       redirect_to new_session_path
     end
     @submit = '更新'
+    @event.start_date = @event.start_date.strftime("%Y-%m-%d")
+    unless @event.end_date.blank?
+      @event.end_date = @event.end_date.strftime("%Y-%m-%d")
+    end
     #@event_option = @event.event_options.find_by(event_id: @event.id)
   end
   
@@ -98,6 +102,7 @@ class EventsController < ApplicationController
   def confirm
     @event = Event.new(event_params)
     @event.user = current_user
+    
     #@event.build_event_option(event_params)
     
     #binding.pry # ブレークポイントを設定
@@ -106,6 +111,7 @@ class EventsController < ApplicationController
     logger.debug(@event.user)
     logger.debug(@event.event_option)
     logger.debug(@event.event_option.weather)
+    logger.debug(@event.event_option.first_low_tide)
 
     @submit = '登録'
     render :new if @event.invalid?

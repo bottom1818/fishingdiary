@@ -5,6 +5,17 @@
   color: #000000;
   margin: 2em 0;
   padding: 2em;
+  height: 470px;
+  overflow: scroll;
+}
+
+.input-event-box {
+  background-color: #83bff3;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #83bff3;
+  color: #000000;
+  margin: 2em 0;
+  padding: 2em;
 }
 
 .new-event-box {
@@ -35,4 +46,8 @@
   padding: 2em;
   height: 70px;
   width: 300px;
+}
+
+.event_option_first_tide > li > select {
+  width: 40px;
 }

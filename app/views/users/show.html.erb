@@ -10,8 +10,8 @@
     <div class="col-xs-12 col-md-6 event-panel event-box">
       <div class="event-panel">
         <p>釣り場所:<%= event.spot_name %></p>
-        <p>開始日:<%= event.start_date %></p>
-        <p>終了日:<%= event.end_date %></p>
+        <p>開始日:<%= event.start_date.strftime("%Y-%m-%d") %></p>
+        <p>終了日:<%= event.end_date.strftime("%Y-%m-%d") %></p>
         <p>釣り方:<%= event.method %></p>
         <p>狙う魚:<%= event.target %></p>
         <p>タックル:<%= event.tackle %></p>

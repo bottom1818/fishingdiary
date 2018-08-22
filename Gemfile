@@ -68,3 +68,8 @@ gem 'search_cop'
 gem 'jquery-ui-rails'
 
 gem 'font-awesome-rails'
+
+gem 'rails-i18n'
+
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.37'

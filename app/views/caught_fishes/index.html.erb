@@ -15,7 +15,7 @@
         <div class="caught_fish-links">
           <% if @event.user_id == current_user.id %>
             <%= link_to '編集', edit_caught_fish_path(@event,id: caught_fish.id), class: 'btn btn-info' %> |
-            <%= link_to '削除', destroy_caught_fish_path(@event,id: caught_fish.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <%= link_to '削除', destroy_caught_fish_path(@event,id: caught_fish.id), method: :delete, data: { confirm: '本当に削除しますか?' }, class: 'btn btn-danger' %>
           <% end %>
         </div>
 

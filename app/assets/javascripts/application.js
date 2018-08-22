@@ -16,4 +16,6 @@
 //= require jquery-ui/widgets/datepicker
 //= require jquery-ui/i18n/datepicker-ja
 //= require bootstrap/dist/js/bootstrap.js
+//= require moment
+//= require bootstrap-datetimepicker
 //= require_tree .

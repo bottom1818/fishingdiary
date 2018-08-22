@@ -12,6 +12,7 @@
  *
  *= require bootstrap/dist/css/bootstrap.css
  *= require jquery-ui/datepicker
+ *= require bootstrap-datetimepicker
  *= require font-awesome
  *= require_tree .
  *= require_self

@@ -1,12 +1,10 @@
 Rails.application.routes.draw do
   
-  get '/', to: 'tops#index'
+  root 'tops#index'
 
-  resources :users do
-  end
+  resources :users
   
-  resources :sessions do
-  end
+  resources :sessions
   
   resources :favorites, only: [:create, :destroy]
   
@@ -24,11 +22,6 @@ Rails.application.routes.draw do
   post '/caught_fishes/:event_id', to: 'caught_fishes#create', as: 'create_caught_fish'
   delete '/caught_fishes/:event_id/:id', to: 'caught_fishes#destroy', as: 'destroy_caught_fish'
   patch '/caught_fishes/:event_id/:id', to: 'caught_fishes#update', as: 'update_caught_fish'
-#  resources :caught_fishes do
-#    collection do
-#      post :confirm
-#    end
-#  end
 
   resources :tops do
   end

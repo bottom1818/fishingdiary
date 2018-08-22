@@ -1,4 +1,4 @@
-<div class="col-xs-12 col-md-6 event-panel event-box">
+<div class="col-xs-12 col-md-6 event-panel input-event-box">
 
   <%= form_with(model: @event, local: true ,url: event_choose_new_or_edit ) do |form| %>
     <% if @event.errors.any? %>
@@ -86,8 +86,8 @@
               ["若潮", "若潮"]]
             %>
           </div>
-          </li>
-        </ul>
+        </li>
+      </ul>
       
       <br>
       <br>
@@ -149,21 +149,48 @@
         <div class="event_option_first_tide">
           <li>
             <%= event_option_form.label :first_low_tide, "干潮時刻１：" %>
-            <%= event_option_form.text_field :first_low_tide %>
+            <div class='input-group date timepicker'>
+              <span class="input-group-addon">
+                <span class="fa fa-clock-o"></span>
+              </span>
+              <%= event_option_form.text_field :first_low_tide,
+                class: 'form-control', style: "width: 192px" %>
+            </div>
           </li>
           <li>
             <%= event_option_form.label :first_high_tide, "満潮時刻１：" %>
-            <%= event_option_form.text_field :first_high_tide %>
+            <div class='input-group date timepicker'>
+              <span class="input-group-addon">
+                <span class="fa fa-clock-o"></span>
+              </span>
+              <%= event_option_form.text_field :first_high_tide,
+                class: 'form-control', style: "width: 192px" %>
+            </div>
           </li>
         </div>
+        
+      </ul>
+      <ul>
         <div class="event_option_second_tide">
           <li>
             <%= event_option_form.label :second_low_tide, "干潮時刻２：" %>
-            <%= event_option_form.text_field :second_low_tide %>
+            <div class='input-group date timepicker'>
+              <span class="input-group-addon">
+                <span class="fa fa-clock-o"></span>
+              </span>
+              <%= event_option_form.text_field :second_low_tide,
+                class: 'form-control', style: "width: 192px" %>
+            </div>
           </li>
           <li>
             <%= event_option_form.label :second_high_tide, "満潮時刻２：" %>
-            <%= event_option_form.text_field :second_high_tide %>
+            <div class='input-group date timepicker'>
+              <span class="input-group-addon">
+                <span class="fa fa-clock-o"></span>
+              </span>
+              <%= event_option_form.text_field :second_high_tide,
+                class: 'form-control', style: "width: 192px" %>
+            </div>
           </li>
         </div>
       </ul>

@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <% if content_for?(:body_attributes) %>
+      <%= yield(:body_attributes) %>
+    <% end %>>
     <header>
       <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">

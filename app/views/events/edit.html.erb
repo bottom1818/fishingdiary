@@ -1,4 +1,8 @@
 <div class="container">
+  <% content_for(:body_attributes) do %>
+    data-turbolinks="false"
+  <% end %>
+
   <u><h2>釣り日記を編集する</h2></u>
 
   <%= render 'form' %>

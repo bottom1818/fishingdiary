@@ -11,6 +11,17 @@ footer {
   height: 54px;
 }
 
+ul:before, ul:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+li:before, li:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
 ul li {
   list-style: none;
   label {
@@ -20,7 +31,12 @@ ul li {
   }
   select {
     margin-right: 10px;
-    width:100px;
+    width:230px;
+    float: left; 
+  }
+  input {
+    margin-right: 10px;
+    width:230px;
     float: left; 
   }
 }
