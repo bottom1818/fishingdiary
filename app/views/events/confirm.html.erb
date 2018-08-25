@@ -1,7 +1,7 @@
 <div class="container">
 <u><h3>以下の内容で、送信する。</h3></u>
 
-<div class="col-xs-12 col-md-6 event-panel event-box">
+<div class="col-xs-12 col-md-6 event-panel show-event-box">
 <%= form_with(model: @event, url: events_path, local: true) do |form| %>
   <%= form.hidden_field :spot_name %>
   <%= form.hidden_field :start_date %>
